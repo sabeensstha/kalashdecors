@@ -3,8 +3,9 @@ import Navbar from "../components/Navbar"
 import Announcement from "../components/Announcement"
 import Newsletter from "../components/Newsletter"
 import Footer from "../components/Footer"
-import { Add, Remove } from "@mui/icons-material"
+import { Add,  Remove } from "@mui/icons-material"
 import {useState , useEffect} from "react"
+import { useParams } from 'react-router-dom'
 
 const Container = styled.div` `
 
@@ -107,13 +108,14 @@ const Button = styled.button`
   cursor: pointer;
 `
 
-const Product = (props) => {
-  console.log(props.id)
+const ProductDetail = (props) => {
+  const {id} = useParams();
+  console.log(props);
   const [pro , setPro] = useState([]);
-  const fetchPro = async () => {
-    const res = await fetch(`http://192.168.1.72:8001/product/${props.id}/detail/`)
+  const fetchPro  =  async () => {
+    const res = await fetch(`http://192.168.1.72:8000/product/${id}/detail/`)
     const data = await res.json()
-    
+    console.log(data)
     return data
   }
   useEffect(() => {
@@ -122,25 +124,20 @@ const Product = (props) => {
       setPro(proFromServer)
   }
   getPro()
-})
-
-
+}, [])
 
   return (
     <Container>
         <Navbar />
         <Announcement />
-          {pro && pro.map((value) => {
-              const [id, title,price,description,quantity] = value;
-              return(
-              <Wrapper key={id}>
+        <Wrapper>
                 <ImgContainer>
-                <Image  />
+                <Image src={pro.photo} />
                 </ImgContainer>
                 <InfoContainer >
-                <Title>{title}</Title>
-                <Desc>{description}</Desc>
-                <Price>{price}</Price>
+                <Title>{pro.title}</Title>
+                <Desc>{pro.description}</Desc>
+                <Price>{pro.price}</Price>
                 <FilterContainer>
                   <Filter>
                     <FilterTitle>Color</FilterTitle>
@@ -163,16 +160,14 @@ const Product = (props) => {
 
                   <AmountContainer>
                     <Remove />
-                    <Amount>{quantity}</Amount>
+                    <Amount>{pro.quantity}</Amount>
                     <Add />
                     <Button>ADD TO CART</Button>
                   </AmountContainer>
                 </AddContainer>
             </InfoContainer>
             </Wrapper>
-              );
-            })
-          }
+            
             
        
         <Newsletter />
@@ -181,4 +176,4 @@ const Product = (props) => {
   )
 }
 
-export default Product
+export default ProductDetail

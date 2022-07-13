@@ -1,0 +1,31 @@
+$(function(){
+    var theForm = $('form#frmPayment');
+    if($('input[name="payment-option"]').length>0)
+    {
+        $('input[name="payment-option"]').click(function(){
+            var $this = $(this);
+            var itemID = $this.attr('id');
+            theForm.find('select').attr('disabled', 'disabled');
+
+            if($('select#sel-'+itemID).length>0)
+            {
+                var theSelect = $('select#sel-'+itemID);
+                theSelect.removeAttr('disabled');
+            }
+        });
+    }
+    
+    $('button#btnSubmit').click(function(e)
+    {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var selectedLength = $('input[name="payment-option"]:checked').length;
+
+        console.log(selectedLength);
+
+        if(selectedLength> 0)
+            theForm.submit();
+        else
+            alert('Please select payment option first');
+    });
+});

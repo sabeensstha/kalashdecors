@@ -1,0 +1,16 @@
+body
+{
+    font-family: 'Roboto', sans-serif;
+}
+.page-footer {
+    padding-left: 13px!important;
+    background: #f4f4f4!important;
+    padding-top: 13px!important;
+    padding-bottom: 10px;
+    border-top: 1px solid #CECECE;
+}
+footer {
+    min-height: 28px;
+    background: #f4f4f4!important;
+    font-size: 13px;
+}

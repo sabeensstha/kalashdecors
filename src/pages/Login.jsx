@@ -1,5 +1,9 @@
+import { useState } from "react"
+import { useDispatch } from "react-redux"
 import styled from "styled-components"
-import login from "./login.png"
+import Navbar from "../components/Navbar"
+import { login } from "../features/userSlice"
+import login123 from "./login.png"
 
 const Container = styled.div`
     width: 100vw;
@@ -55,19 +59,46 @@ const Link = styled.div`
 `
 
 const Login = () => {
-  return (
-    <Container background={login}>
+    const [username,setUsername] = useState(""); 
+    const [password,setPassword] = useState(""); 
+
+    const dispatch = useDispatch();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(
+            login({
+            username: username,
+            password: password,
+            loggedIn: true,
+        }))
+    }
+    return (
+        <><Navbar />
+    <Container background={login123}>
+        
         <Wrapper>
             <Title>SIGN IN</Title>
-            <Form>
-                <Input placeholder="Username" />
-                <Input placeholder="Password" />
+            <form onSubmit={(e) => handleSubmit(e)}>
+                <Input 
+                    placeholder="Username" 
+                    type="name" 
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+                <Input 
+                    placeholder="Password" 
+                    type="password" 
+                    value={password} 
+                    onChange={(e) => setPassword(e.target.value)}
+                />
                 <Button>LOGIN</Button>
                 <Link>DO YOU NOT REMEMBER YOUR PASSWORD</Link>
                 <Link>CREATE A NEW ACCOUNT</Link>
-            </Form>
+            </form>
         </Wrapper>
     </Container>
+    </>
   )
 }
 

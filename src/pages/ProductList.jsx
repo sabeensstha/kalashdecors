@@ -39,21 +39,10 @@ const ProductList = () => {
         <FilterContainer>
             <Filter>
                 <FilterText>Filter Products:</FilterText>
+                
                 <Select>
                     <Option disabled selected>
-                        Color
-                    </Option>
-                    <Option>White</Option>
-                    <Option>Black</Option>
-                    <Option>Red</Option>
-                    <Option>BLue</Option>
-                    <Option>Yellow</Option>
-                    <Option>Green</Option>
-                    <Option>Orange</Option>
-                </Select>
-                <Select>
-                    <Option disabled selected>
-                        Size
+                        Category
                     </Option>
                     <Option>XS</Option>
                     <Option>S</Option>
