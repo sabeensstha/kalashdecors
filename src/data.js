@@ -2,7 +2,7 @@ import ok from "./components/ok.jpg"
 import okok from "./components/okok.jpg"
 import wew from "./components/new.jpg"
 import kkk from "./components/kkk.jpg"
-import kondo from "./components/kondo.jpg"
+import kon from "./components/kon.jpg"
 import kk from "./components/gg.jfif"
 import spoon from "./components/spoon.png"
 import ggg from "./components/ggg.jfif"
@@ -41,7 +41,7 @@ export const categories = [
     },
     {
         id: 2,
-        img: kondo,
+        img: kon,
         title: " HOME DECORS!",
     },
     {
