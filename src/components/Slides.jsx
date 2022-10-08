@@ -1,7 +1,7 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@mui/icons-material'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-// import { sliderItems } from '../data'
+import { sliderItems } from '../data'
 import {Link} from "react-router-dom"
 // import api from "../api/slides"
 
@@ -122,16 +122,16 @@ const fetchSlides = async () => {
             <ArrowLeftOutlined />
         </Arrow>
         <Wrapper slideIndex={x}>
-            {slideIndex && slideIndex.map((item) => {
-                const {id, photos,title,description} = item;
+            {sliderItems && sliderItems.map((item) => {
+                const {id, img,title,desc} = item;
                 return (
             <Slide key={id}>
                 <ImgContainer>
-                    <Image src={photos} alt="don" />
+                    <Image src={img} alt="don" />
                 </ImgContainer>
                 <InfoContainer>
                     <Title>{title}</Title>
-                    <Desc>{description}</Desc>
+                    <Desc>{desc}</Desc>
                         <Link to="/product">
                     <Button>
                              SHOP NOW 
